@@ -12,26 +12,6 @@ Given('I go to losestudiantes home screen', async() => {
   }
 });
 
-// instagramstyles__CloseButton-sc-1ystbkl-1 gixxXm
-// const closeButtonSelector = '.instagramstyles__CloseButton-sc-1ystbkl-1.gixxXm';
-// await $(closeButtonSelector).waitForExist(3000);
-// await $(closeButtonSelector).waitForDisplayed(3000);
-// const isModalDisplayed = await $(closeButtonSelector).isDisplayed();
-// if(!isModalDisplayed) {
-//   console.log("NOHAYYYYYYYY");
-// }
-
-// if(isModalDisplayed) {
-//   await $(closeButtonSelector).click();
-// }
-// // Espera a que el botón de cerrar esté presente y visible
-// await $(closeButtonSelector).waitForExist({ timeout: 5000 });
-// await $(closeButtonSelector).waitForDisplayed({ timeout: 5000 });
-
-// const isModalDisplayed = await $(modalSelector).isDisplayed();
-// if (isModalDisplayed) {
-//   await $(closeButtonSelector).click();
-// }
 When('I open the login screen', async() => {
   await $('button.loginButton').waitForExist(5000);
   await $('button.loginButton').waitForDisplayed(5000);
@@ -76,7 +56,6 @@ When('I try to register', async() => {
 });
 
 When(/^I try to register with (.*), (.*), (.*), (.*), (.*), y (.*)$/ , async(nombre, apellido, email, password, repeatPassword, terms) => {
-  // When('I try to register with', async() => {
     
     var nameInput = await $('input[name="firstname"]');
     await nameInput.setValue(nombre);
@@ -103,18 +82,12 @@ When(/^I try to register with (.*), (.*), (.*), (.*), (.*), y (.*)$/ , async(nom
     
   });
 When('I try to register ok' , async() => {
-  // When('I try to register with', async() => {
-    // const name = faker.name.firstName();
-    // const lastName = faker.name.lastName();
-    // const email = faker.internet.email();
-    // const password = faker.internet.password();
+  
     const name = 'Andrea'
     const lastName = 'Villamizar'
     const email = generarCorreoAleatorio();
     const password = '12345678'
 
-    // Ahora puedes utilizar estos datos aleatorios en tu formulario de registro
-    // Por ejemplo:
     await $('input[name="firstname"]').setValue(name);
     await $('input[name="lastname"]').setValue(lastName);
     await $('input[name="email"]').setValue(email);
@@ -133,45 +106,12 @@ When('I try to register ok' , async() => {
     for (let i = 0; i < 10; i++) {
         correo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     }
-    correo += '@example.com'; // Puedes cambiar 'example.com' por el dominio que desees
+    correo += '@example.com'; 
     return correo;
 }
 
-  // body > div:nth-child(5)
-  
-  // <div role="dialog">
-  //   <div class="fade modal-backdrop in">
-  //     </div>
-  //     <div role="dialog" tabindex="-1" class="fade in modal" style="display: block;">
-  //       <div class="modal-dialog">
-  //         <div class="modal-content" role="document">
-  //           <div class="modal-header">
-  //             <h3 class="text-center">Quieres seguirnos en <i>Instagram</i>?</h3>
-  //             <button class="instagramstyles__CloseButton-sc-1ystbkl-1 gixxXm">×</button>
-  //             </div><div class="modal-body">
-  //               <div class="instagramstyles__CallToAction-sc-1ystbkl-0 gYZEud">
-  //                 <div class="flex pb-4 justify-center text-xl font-bold">
-  //                   <a href="https://www.instagram.com/nosotroslosestudiantes/" target="_blank">Instagram: <span class="underline">@nosotroslosestudiantes</span></a>
-  //                   </div>
-  //                   <div>Posteamos sobre:</div>
-  //                   <ul class="list-disc list-inside">
-  //                     <li>Los profesores/carreras mejor rankeados.</li>
-  //                     <li>Historias de estudiantes (Uniandes, La Nacho y URosario).</li>
-  //                     <li>Updates de la página.</li>
-  //                     </ul>
-  //                     <br>
-  //                     <div class="flex justify-center text-lg">Solo te mostraremos esto una vez :)</div>
-  //                     </div>
-  //                     </div>
-  //                     </div>
-  //                     </div>
-  //                     </div>
-  //                     </div>
   Then('I hope to see a message indicating successful registration', async () => {
-    // const alertElement = await $('.notice.alert.alert-danger');
-    // await alertElement.waitForDisplayed({ timeout: 5000 });
-    // await expect($('.notice.alert.alert-danger')).toBeExisting();
-    // await expect($('.notice.alert.alert-danger')).toHaveTextContaining(error);
+   
     const swal2TitleElement = await $('h2.swal2-title');
     await swal2TitleElement.waitForDisplayed({ timeout: 5000 });
     await expect($('h2.swal2-title')).toBeExisting();
